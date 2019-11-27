@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+<script>
+    function myFunction(){
+            var totalchar = 0;
+            var totalword = 0;
+            var txt = document.getElementById("text1").value;
+            var len = txt.length;
+            var currchar;
+            var newstr;
+            var formalstrlen;
+            var newstrsta = 0;
+            for(var n = 0; n < len; n++)
+            {
+                currchar = txt.substr(n, 1);
+                if(currchar != " ")
+                {
+                    totalchar += 1;
+                }
+            }
+            newstr = txt;
+            while ( (newstr.indexOf(" ")!= -1) && (newstr.indexOf(" ") != (newstr.length - 1)) )
+            {
+                formalstrlen = newstr.length;
+                posofspace = newstr.indexOf(" ");
+                if(posofspace == 0)
+                {
+                    newstrsta = posofspace + 1;
+                }
+                else
+                {
+                    totalword += 1;
+                    newstrsta = posofspace + 1;
+                }
+                newstr = newstr.substr(newstrsta);
+            }
+            outcome = "Total charactars : " + totalchar + "<br>Total words: " + totalword;
+            document.getElementById("paragraph").innerHTML = outcome;
+    }
+</script>
+</head>
+<body>
+<textarea id="text1" onkeyup="myFunction();"></textarea>
+<p id="paragraph"></p>
+</body>
+</html>
